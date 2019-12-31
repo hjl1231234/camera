@@ -1,7 +1,13 @@
 package com.example.thundersoft.camera;
 
+import android.app.Activity;
 import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Rect;
 import android.hardware.Camera;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
+import android.util.AttributeSet;
 import android.util.Log;
 import android.view.Surface;
 import android.view.SurfaceHolder;
@@ -9,49 +15,52 @@ import android.view.SurfaceView;
 
 import java.io.IOException;
 
-public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback {
-    private static final String TAG = "CameraPreview";
-    private SurfaceHolder mholder;
-    private Camera mcamera;
+import static com.example.thundersoft.camera.MainActivity.TAG;
 
-    public CameraPreview(Context context,Camera camera) {
+public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback {
+    private Camera mCamera;
+    private Camera.Parameters mParameters;
+
+    public CameraPreview(Context context) {
         super(context);
-        mcamera = camera;
-        mholder = getHolder();
-        mholder.addCallback(this);
-        mholder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
+    }
+
+    public CameraPreview(Context context, AttributeSet attrs) {
+        super(context, attrs);
+    }
+
+    public CameraPreview(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    public CameraPreview(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+        super(context, attrs, defStyleAttr, defStyleRes);
     }
 
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
+        mCamera = Camera.open(0);
+        mParameters = mCamera.getParameters();
+        mCamera.setDisplayOrientation(90);
         try {
-            mcamera.setPreviewDisplay(holder);
-            mcamera.startPreview();
+            mCamera.setPreviewDisplay(getHolder());
         } catch (IOException e) {
-            Log.d(TAG, "Error setting camera preview:"+e.getMessage());
+            e.printStackTrace();
         }
+        mCamera.setParameters(mParameters);
+        mCamera.startPreview();
     }
 
     @Override
     public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
-        if(mholder.getSurface()==null){
-            return;
-        }
-        try {
-            mcamera.stopPreview();
-        }catch (Exception e){
 
-        }
-        try {
-            mcamera.setPreviewDisplay(mholder);
-            mcamera.startPreview();
-        } catch (IOException e) {
-            Log.d(TAG, "Error starting camera preview:"+e.getMessage());
-        }
     }
 
     @Override
     public void surfaceDestroyed(SurfaceHolder holder) {
 
     }
+
+
 }

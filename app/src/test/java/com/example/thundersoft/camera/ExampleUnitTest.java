@@ -1,7 +1,10 @@
 package com.example.thundersoft.camera;
 
+import android.util.Log;
+
 import org.junit.Test;
 
+import static com.example.thundersoft.camera.MainActivity.TAG;
 import static org.junit.Assert.*;
 
 /**
@@ -14,4 +17,7 @@ public class ExampleUnitTest {
     public void addition_isCorrect() {
         assertEquals(4, 2 + 2);
     }
+
+
 }
+
