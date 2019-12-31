@@ -157,8 +157,10 @@ public class Main2Activity extends AppCompatActivity {
     private void startPreview() {
         try {
             mBuilder = mDevice.createCaptureRequest(CameraDevice.TEMPLATE_PREVIEW);
+
             mBuilder.addTarget(mSurface);
             mRequest = mBuilder.build();
+
             mDevice.createCaptureSession(Arrays.asList(mSurface, mImageReader.getSurface()), previewCallback, null);
         } catch (Exception e) {
             e.printStackTrace();
@@ -171,6 +173,10 @@ public class Main2Activity extends AppCompatActivity {
             mBuilder.addTarget(mImageReader.getSurface());
             mRequest = mBuilder.build();
             mSession.capture(mRequest, null, null);
+
+
+
+
         } catch (Exception e) {
             e.printStackTrace();
         }
