@@ -1,19 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".sample.Main2Activity">
+
     <TextureView
         android:id="@+id/texture"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    <Button
-        android:id="@+id/click"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="click it!"/>
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/picture"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/ic_camera"
+            android:text="拍摄" />
+
+        <ImageView
+            android:id="@+id/record"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+
+            android:layout_marginLeft="30dp"
+            android:layout_toRightOf="@+id/picture"
+
+
+            android:src="@drawable/ic_play_arrow_black_24dp"
+            android:text="录像" />
+
+        <ImageView
+            android:id="@+id/bt_flash"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+
+            android:layout_marginRight="30dp"
+
+            android:layout_toLeftOf="@+id/picture"
+            android:src="@drawable/ic_flash_on_black_24dp"
+            android:text="开启闪光" />
+
+        <ImageView
+            android:id="@+id/bt_switch"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+
+            android:layout_marginLeft="30dp"
+
+            android:layout_toRightOf="@id/record"
+            android:src="@drawable/ic_autorenew_black_24dp"
+
+            android:text="切换" />
+
+        <ImageView
+            android:id="@+id/bt_photo"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+
+            android:layout_marginRight="30dp"
+
+            android:layout_toLeftOf="@id/bt_flash"
+            android:src="@drawable/ic_photo_black_24dp"
+
+            android:text="相册" />
+
+
+    </RelativeLayout>
 </FrameLayout>

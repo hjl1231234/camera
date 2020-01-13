@@ -3,6 +3,7 @@ package com.example.thundersoft.camera;
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
+import android.util.SparseIntArray;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -23,4 +24,6 @@ public class ExampleInstrumentedTest {
 
         assertEquals("com.example.thundersoft.camera", appContext.getPackageName());
     }
+
+
 }

@@ -34,7 +34,7 @@ public class Main2Activity extends AppCompatActivity {
     private TextureView mTextureView;
     private SurfaceTexture mSurfaceTexture;
     private Surface mSurface;
-    private Button mClick;
+    private Button mPicture;
 
     private CameraManager mCameraManager;
     private CameraDevice mDevice;
@@ -49,7 +49,7 @@ public class Main2Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
         mTextureView = findViewById(R.id.texture);
-        mClick = findViewById(R.id.click);
+        mPicture = findViewById(R.id.picture);
         mTextureView.setSurfaceTextureListener(surfaceTextureListener);
 
         mImageReader = ImageReader.newInstance(1280, 720, ImageFormat.JPEG, 2);
@@ -60,7 +60,7 @@ public class Main2Activity extends AppCompatActivity {
                 Image image = reader.acquireLatestImage();
             }
         }, null);
-        mClick.setOnClickListener(new View.OnClickListener() {
+        mPicture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 takePicture();
@@ -187,7 +187,6 @@ public class Main2Activity extends AppCompatActivity {
             ActivityCompat.requestPermissions(this, new String[]{
                     Manifest.permission.CAMERA}, 1);
         } else {
-//            initCamera();
             openCamera();
         }
     }
@@ -197,7 +196,6 @@ public class Main2Activity extends AppCompatActivity {
         switch (requestCode) {
             case 1:
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-//                    initCamera();
                     openCamera();
                 } else {
                     Toast.makeText(this, "You denied the permission", Toast.LENGTH_SHORT).show();

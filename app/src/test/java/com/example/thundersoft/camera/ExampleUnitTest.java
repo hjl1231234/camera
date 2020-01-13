@@ -1,6 +1,7 @@
 package com.example.thundersoft.camera;
 
 import android.util.Log;
+import android.util.SparseIntArray;
 
 import org.junit.Test;
 
